@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
+    <script type="text/javascript" src="lib/knockout-2.1.0.debug.js"></script>
+    <script type='text/javascript' src='tasktimer.js'></script>
+  </head>
+  <body>
+    <form data-bind='submit: addTask'>
+      New task: <input type=text data-bind='value: newTaskName'>
+      <button type=submit>Add</button>
+    </form>
+    <form data-bind='foreach: tasks'>
+      <div>
+        <button data-bind='click: $root.w($root.removeTask)(name)'>X</button>
+        <button data-bind='text: name, click: $root.w($root.startTask)(name)'></button>
+        <span data-bind='text: averageTime'></span>
+      </div>
+    </form>
+    <table>
+      <tbody data-bind='foreach: timeList'>
+        <tr>
+          <td data-bind='text: started'></td>
+          <td data-bind='text: name'></td>
+          <td data-bind='text: timeSpent'></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
